@@ -15,5 +15,7 @@ dump.rdb
 *.min.*
 *.debug.*
 *.js
-config/bizConfig.ts
 app/assets.json
+config/bizConfig.ts
+public/
+*myprivacy*
