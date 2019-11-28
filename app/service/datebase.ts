@@ -3,6 +3,7 @@ import User from '../model/user.model';
 import { Jscode2session } from '../model/jscode2session';
 import Activity from '../model/activity.model';
 import UserJoin from '../model/userJoin.model';
+import { Op } from 'sequelize';
 
 /**
  * DatebaseService
@@ -17,7 +18,7 @@ export default class DatebaseService extends Service {
     return await User.findAll({
       where: {
         user_id: {
-          $or: openIds
+          [Op.in]: openIds
         }
       }
     })
@@ -34,12 +35,18 @@ export default class DatebaseService extends Service {
     return await user.save()
   }
 
-  async insertOrUpdateUserByJscode2session(jscode2session: Jscode2session): Promise<boolean> {
-    return await User.upsert({
-      wx_openid: jscode2session.openid,
-      user_id: jscode2session.openid,
-      session_key: jscode2session.session_key
-    })
+  async insertOrUpdateUserByJscode2session(jscode2session: Jscode2session): Promise<User> {
+    const user = await this.findUserByUserId(jscode2session.openid)
+    if (user) {
+      user.session_key = jscode2session.session_key
+      return await user.save()
+    } else {
+      return await User.build({
+        wx_openid: jscode2session.openid,
+        user_id: jscode2session.openid,
+        session_key: jscode2session.session_key
+      }).save()
+    }
   }
 
   async updateUser(user: User): Promise<[number, User[]]> {
@@ -88,7 +95,7 @@ export default class DatebaseService extends Service {
     return await Activity.findAll({
       where: {
         activity_id: {
-          $or: activityIds
+          [Op.in]: activityIds
         }
       }
     })

@@ -10,8 +10,8 @@
   "scripts": {
     "start": "egg-scripts start --port=3000 --daemon --title=egg-server-wtsp",
     "stop": "egg-scripts stop --title=egg-server-wtsp",
-    "dev": "egg-bin dev --port",
-    "debug": "egg-bin debug",
+    "dev": "egg-bin dev --port=3000",
+    "debug": "egg-bin debug --port=3000",
     "test-local": "egg-bin test",
     "test": "npm run lint -- --fix && npm run test-local",
     "cov": "egg-bin cov",

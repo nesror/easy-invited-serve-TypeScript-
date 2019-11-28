@@ -117,7 +117,7 @@ export default class WxMsgService extends Service {
     }
 
 
-    private async getAccessToken(config, ctx): Promise<string> {
+    private async getAccessToken(config: import("egg").EggAppConfig, ctx: import("egg").Context): Promise<string> {
         let result = await new HttpClientProxy<any>('https://api.weixin.qq.com/cgi-bin/token')
             .setData({
                 appid: config.wx.appid,

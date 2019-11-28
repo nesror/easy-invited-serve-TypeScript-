@@ -84,9 +84,6 @@ export default class HttpClientProxy<T> {
      * @param ctx Context
      */
     async get(ctx: Context): Promise<HttpResponse<T>> {
-        if (this.data) {
-            throw 'get请求不能设置data';
-        }
         const res = await ctx.curl<HttpResponse<T>>(this.httpUrl, {
             contentType: this.contentType,
             dataType: this.dataType,
@@ -96,6 +93,7 @@ export default class HttpClientProxy<T> {
         ctx.logger.info(`get->
 --------------request----------------
     ---URL:${this.httpUrl}
+    ---DATA:${JSON.stringify(res.result.data)}
 -------------response----------------
     ---headers:${JSON.stringify(res.headers)}
     ---body:${JSON.stringify(res.data)}

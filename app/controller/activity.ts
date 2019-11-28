@@ -124,11 +124,11 @@ export default class ActivityController extends Controller {
         const userJoins = await service.datebase.findUserJoinActivityByUserId(query.openid);
         const activityIds = new Array<number>()
         userJoins.forEach(userJoin => {
-            activityIds.push(userJoin.activity_id)
+            if (userJoin.activity_id) {
+                activityIds.push(userJoin.activity_id)
+            }
         })
-        // for (let j = dbResult.length - 1, len = 0; j >= 0; j--) {
-        //     activityIds.push(dbResult[j].activity_id)
-        // }
+        this.logger.info("activityIds->" + JSON.stringify(userJoins))
         if (activityIds.length > 0) {
             ctx.body = await service.datebase.findActivitysByIds(activityIds);
         } else {
@@ -147,9 +147,6 @@ export default class ActivityController extends Controller {
         joinInfos.forEach(joinInfo => {
             userIds.push(joinInfo.user_id)
         })
-        // for (let j = 0, len = joinInfo.length; j < len; j++) {
-        //     userIds.push(joinInfo[j].user_id)
-        // }
         if (userIds.length == 0) {
             ctx.body = ""
             return

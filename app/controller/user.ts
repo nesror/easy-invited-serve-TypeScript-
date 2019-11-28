@@ -13,7 +13,7 @@ export default class UserController extends Controller {
      * 用户登陆
      */
     public async login() {
-        const { ctx, config, logger, service } = this;
+        const { ctx, config, service } = this;
         const res = await new HttpClientProxy<Jscode2session>('https://api.weixin.qq.com/sns/jscode2session')
             .setData({
                 appid: config.wx.appid,
@@ -22,8 +22,9 @@ export default class UserController extends Controller {
                 grant_type: 'authorization_code'
             })
             .get(ctx)
-        logger.info("login->" + JSON.stringify(res))
+
         ctx.body = await service.datebase.insertOrUpdateUserByJscode2session(res.data)
+        ctx.logger.info("login->", JSON.stringify(ctx.body))
     }
 
     /**
@@ -37,7 +38,9 @@ export default class UserController extends Controller {
         user.user_name = query.name
         user.phone = query.phone
         user.user_img = query.img
-        ctx.body = await service.datebase.updateUser(user)
+        const data = await service.datebase.updateUser(user)
+        ctx.logger.info("userUpdate->", JSON.stringify(data))
+        ctx.body = data
     }
 
 }
