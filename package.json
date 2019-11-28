@@ -8,7 +8,7 @@
     "declarations": true
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-wtsp",
+    "start": "egg-scripts start --port=3000 --daemon --title=egg-server-wtsp",
     "stop": "egg-scripts stop --title=egg-server-wtsp",
     "dev": "egg-bin dev --port",
     "debug": "egg-bin debug",
