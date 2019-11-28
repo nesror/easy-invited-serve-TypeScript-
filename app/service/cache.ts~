@@ -16,7 +16,7 @@ export default class CacheService extends Service {
     let data = await redis.get(prefix + key);
     if (!data) return;
     const duration = (Date.now() - t);
-    logger.info('Cache', 'get', key, (duration + 'ms'));
+    logger.debug('Cache', 'get', key, (duration + 'ms'));
     return data;
   }
 
@@ -30,7 +30,7 @@ export default class CacheService extends Service {
     const t = Date.now();
     await redis.set(prefix + key, value);
     const duration = (Date.now() - t);
-    logger.info('Cache', 'set', key, (duration + 'ms'));
+    logger.debug('Cache', 'set', key, (duration + 'ms'));
   }
 
   /**
@@ -44,7 +44,7 @@ export default class CacheService extends Service {
     const t = Date.now();
     await redis.set(prefix + key, value, 'EX', seconds);
     const duration = (Date.now() - t);
-    logger.info('Cache', 'set', key, (duration + 'ms'));
+    logger.debug('Cache', 'set', key, (duration + 'ms'));
   }
 
   /**
@@ -56,7 +56,7 @@ export default class CacheService extends Service {
     const t = Date.now();
     await redis.del(prefix + key);
     const duration = (Date.now() - t);
-    logger.info('Cache', 'del', key, (duration + 'ms'));
+    logger.debug('Cache', 'del', key, (duration + 'ms'));
   }
 
   /**
@@ -70,7 +70,7 @@ export default class CacheService extends Service {
     const result = await redis.multi().incr(prefix + key).expire(key, seconds)
       .exec();
     const duration = (Date.now() - t);
-    logger.info('Cache', 'set', key, (duration + 'ms'));
+    logger.debug('Cache', 'set', key, (duration + 'ms'));
     return result[0][1];
   }
 }

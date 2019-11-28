@@ -31,7 +31,7 @@ export function decodeMsg(app: Application, encryptedComponentVerifyTicke: Encry
     isValid = true
     if (isValid) {
         let str = wechatEncrypt.decode(Encrypt[0]) // 解密数据
-        app.logger.info('decode data:->', str);
+        app.logger.debug('decode data:->', str);
         return str
 
     } else {

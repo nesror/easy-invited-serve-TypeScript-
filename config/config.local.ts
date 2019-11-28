@@ -23,5 +23,9 @@ export default () => {
     },
   };
 
+  config.logger = {
+    consoleLevel: 'DEBUG',
+  };
+
   return config;
 };

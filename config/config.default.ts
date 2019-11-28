@@ -37,6 +37,10 @@ export default (appInfo: EggAppInfo) => {
     },
   };
 
+  config.logger = {
+    outputJSON: true,
+  };
+
   config.view = {
     defaultViewEngine: 'nunjucks',
     mapping: {

@@ -24,7 +24,7 @@ export default class UserController extends Controller {
             .get(ctx)
 
         ctx.body = await service.datebase.insertOrUpdateUserByJscode2session(res.data)
-        ctx.logger.info("login->", JSON.stringify(ctx.body))
+        ctx.logger.debug("login->", ctx.body)
     }
 
     /**
@@ -39,7 +39,7 @@ export default class UserController extends Controller {
         user.phone = query.phone
         user.user_img = query.img
         const data = await service.datebase.updateUser(user)
-        ctx.logger.info("userUpdate->", JSON.stringify(data))
+        ctx.logger.debug("userUpdate->", data)
         ctx.body = data
     }
 

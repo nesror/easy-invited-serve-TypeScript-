@@ -47,11 +47,11 @@ export class ComponentVerifyTickeBuilder {
     componentVerifyTicket: string = ''
     async buildComponentVerifyTicket(app: Application, encryptedComponentVerifyTicke: EncryptedComponent) {
         let encryptInfo = await parseXMLSync<XmlInfo<EncryptInfo>>(encryptedComponentVerifyTicke.$msg)
-        app.logger.info('some request data->', encryptInfo.xml);
+        app.logger.debug('some request data->', encryptInfo.xml);
         // 解密数据
         let decodeInfo = decodeMsg(app, encryptedComponentVerifyTicke, encryptInfo.xml)
         let componentVerifyTickeXml = await parseXMLSync<XmlInfo<VerifyTicket>>(decodeInfo)
         this.componentVerifyTicket = componentVerifyTickeXml.xml.ComponentVerifyTicket
-        app.logger.info('component_verify_ticket:->', this.componentVerifyTicket);
+        app.logger.debug('component_verify_ticket:->', this.componentVerifyTicket);
     }
 }

@@ -128,7 +128,7 @@ export default class ActivityController extends Controller {
                 activityIds.push(userJoin.activity_id)
             }
         })
-        this.logger.info("activityIds->" + JSON.stringify(userJoins))
+        this.logger.debug("activityIds->" + userJoins)
         if (activityIds.length > 0) {
             ctx.body = await service.datebase.findActivitysByIds(activityIds);
         } else {
