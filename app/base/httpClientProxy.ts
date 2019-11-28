@@ -93,7 +93,7 @@ export default class HttpClientProxy<T> {
         ctx.logger.info(`get->
 --------------request----------------
     ---URL:${this.httpUrl}
-    ---DATA:${JSON.stringify(res.result.data)}
+    ---DATA:${JSON.stringify(this.data)}
 -------------response----------------
     ---headers:${JSON.stringify(res.headers)}
     ---body:${JSON.stringify(res.data)}
