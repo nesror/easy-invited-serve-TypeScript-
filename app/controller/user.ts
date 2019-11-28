@@ -2,7 +2,7 @@
 import { Controller } from 'egg';
 import { Jscode2session } from '../model/jscode2session';
 import HttpClientProxy from '../base/httpClientProxy';
-import { User } from '../model/user';
+import User from '../model/user.model';
 
 /**
  * 用户信息

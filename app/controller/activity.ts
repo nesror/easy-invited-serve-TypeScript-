@@ -1,7 +1,7 @@
 //import Controller from '../core/BaseController';
 import { Controller } from 'egg';
-import { Activity } from '../model/activity';
-import { UserJoin } from '../model/userJoin';
+import Activity from '../model/activity.model';
+import UserJoin from '../model/userJoin.model';
 
 /**
  * 活动

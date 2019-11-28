@@ -2,22 +2,24 @@
 // Do not modify this file!!!!!!!!!
 
 import 'egg';
-import ExportActivity from '../../../app/model/activity';
+import ExportActivityModel from '../../../app/model/activity.model';
 import ExportEncryptedComponent from '../../../app/model/encryptedComponent';
 import ExportHttpResponse from '../../../app/model/httpResponse';
 import ExportJscode2session from '../../../app/model/jscode2session';
-import ExportUser from '../../../app/model/user';
-import ExportUserJoin from '../../../app/model/userJoin';
+import ExportMyprivacyModel from '../../../app/model/myprivacy.model';
+import ExportUserModel from '../../../app/model/user.model';
+import ExportUserJoinModel from '../../../app/model/userJoin.model';
 import ExportWxCtx from '../../../app/model/wxCtx';
 
 declare module 'egg' {
   interface IModel {
-    Activity: ReturnType<typeof ExportActivity>;
+    ActivityModel: ReturnType<typeof ExportActivityModel>;
     EncryptedComponent: ReturnType<typeof ExportEncryptedComponent>;
     HttpResponse: ReturnType<typeof ExportHttpResponse>;
     Jscode2session: ReturnType<typeof ExportJscode2session>;
-    User: ReturnType<typeof ExportUser>;
-    UserJoin: ReturnType<typeof ExportUserJoin>;
+    MyprivacyModel: ReturnType<typeof ExportMyprivacyModel>;
+    UserModel: ReturnType<typeof ExportUserModel>;
+    UserJoinModel: ReturnType<typeof ExportUserJoinModel>;
     WxCtx: ReturnType<typeof ExportWxCtx>;
   }
 }

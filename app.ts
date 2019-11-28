@@ -1,8 +1,5 @@
 import { Application } from 'egg';
 import { Sequelize } from 'sequelize-typescript';
-import { Activity } from './app/model/activity';
-import { User } from './app/model/user';
-import { UserJoin } from './app/model/userJoin';
 
 export default (app: Application) => {
   app.beforeStart(async () => {
@@ -16,29 +13,27 @@ export default (app: Application) => {
         username: app.config.sequelize.username,
         password: app.config.sequelize.password,
         port: app.config.sequelize.port,
-        database: app.config.sequelize.database
+        database: app.config.sequelize.database,
+        models: [__dirname + '/app/model/*.model.ts']
       });
     } else {
       // sqlite
       sequelize = new Sequelize({
         host: 'localhost',
         dialect: 'sqlite',
-        storage: __dirname + '/database/db.sqlite'
+        storage: __dirname + '/database/db.sqlite',
+        models: [__dirname + '/app/model/*.model.ts']
       });
     }
-
-    sequelize.addModels([Activity, User, UserJoin])
 
     sequelize
       .sync()
       .then(() => {
-        console.log('init db ok')
+        app.logger.info('init db ok')
       })
       .catch(err => {
-        console.log('init db error', err)
+        app.logger.error('init db error', err)
       })
-
-    app.logger.info('beforeStart->', process.env.HOME + '/database/db.sqlite')
 
   });
 };

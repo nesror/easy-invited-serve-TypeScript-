@@ -3,11 +3,13 @@
 
 import 'egg';
 import ExportDatebase from '../../../app/service/datebase';
+import ExportMyprivacy from '../../../app/service/myprivacy';
 import ExportWxMsg from '../../../app/service/wxMsg';
 
 declare module 'egg' {
   interface IService {
     datebase: ExportDatebase;
+    myprivacy: ExportMyprivacy;
     wxMsg: ExportWxMsg;
   }
 }

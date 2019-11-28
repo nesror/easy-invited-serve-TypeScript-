@@ -36,6 +36,20 @@ export default (appInfo: EggAppInfo) => {
       //ignoreJSON: true
     },
   };
+
+  config.view = {
+    defaultViewEngine: 'nunjucks',
+    mapping: {
+      '.nj': 'nunjucks',
+      '.html': 'nunjucks',
+    },
+    defaultExtension: '.nj',
+  };
+  config.nunjucks = {
+    // dir: 'path/to/template/dir',  // default to `{app_root}/app/view`
+    cache: true, // local env is false
+  };
+  
   // the return config will combines to EggAppConfig
   return {
     ...config as {},

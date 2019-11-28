@@ -15,6 +15,7 @@ import 'egg-static';
 import 'egg-jsonp';
 import 'egg-view';
 import 'egg-alinode';
+import 'egg-view-nunjucks';
 import { EggPluginItem } from 'egg';
 declare module 'egg' {
   interface EggPlugin {
@@ -32,5 +33,6 @@ declare module 'egg' {
     view?: EggPluginItem;
     redis?: EggPluginItem;
     alinode?: EggPluginItem;
+    nunjucks?: EggPluginItem;
   }
 }

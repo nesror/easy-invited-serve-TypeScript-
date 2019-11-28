@@ -3,11 +3,13 @@
 
 import 'egg';
 import ExportActivity from '../../../app/controller/activity';
+import ExportMyprivacy from '../../../app/controller/myprivacy';
 import ExportUser from '../../../app/controller/user';
 
 declare module 'egg' {
   interface IController {
     activity: ExportActivity;
+    myprivacy: ExportMyprivacy;
     user: ExportUser;
   }
 }

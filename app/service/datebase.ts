@@ -1,8 +1,8 @@
 import { Service } from 'egg'
-import { User } from '../model/user';
+import User from '../model/user.model';
 import { Jscode2session } from '../model/jscode2session';
-import { Activity } from '../model/activity';
-import { UserJoin } from '../model/userJoin';
+import Activity from '../model/activity.model';
+import UserJoin from '../model/userJoin.model';
 
 /**
  * DatebaseService

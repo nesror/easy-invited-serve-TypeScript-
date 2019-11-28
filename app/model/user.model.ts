@@ -4,7 +4,7 @@ import { Column, Model, Table, CreatedAt, UpdatedAt } from 'sequelize-typescript
  * 用户信息
  */
 @Table({ tableName: 'user' })
-export class User extends Model<User>{
+export default class User extends Model<User>{
     /**
      * 用户id
      */

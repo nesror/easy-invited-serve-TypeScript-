@@ -15,4 +15,9 @@ export default (app: Application) => {
   router.get('/invited/activity/join', controller.activity.joinActivity);
   router.get('/invited/activity/quit', controller.activity.quitActivity);
 
+  router.get('/', controller.myprivacy.index);
+  router.get('/we', controller.myprivacy.we);
+  router.post('/my/location', controller.myprivacy.add);
+  router.get('/my/location/find', controller.myprivacy.find);
+
 };

@@ -18,4 +18,5 @@ dump.rdb
 app/assets.json
 config/bizConfig.ts
 public/
+view/
 *myprivacy*
