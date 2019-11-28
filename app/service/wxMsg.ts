@@ -86,15 +86,17 @@ export default class WxMsgService extends Service {
 
         const access_token = await this.getAccessToken(config, ctx)
 
-        const user = await this.service.mysql.login({
-            openid: openid
-        })
-        const activity = await this.service.mysql.findActivityWithId({
-            activityId: activityId
-        })
+        const user = await this.service.datebase.findUserByUserId(openid)
+        if (!user) {
+            return
+        }
+        const activity = await this.service.datebase.findActivityById(activityId)
+        if (!activity) {
+            return
+        }
         const data = JSON.stringify({
             touser: activity.owner,
-            form_id: activity.formid,
+            form_id: activity.form_id,
             page: '/pages/activity/detail/index?activityid=' + activity.activity_id,
             data: {
                 "keyword1": {
