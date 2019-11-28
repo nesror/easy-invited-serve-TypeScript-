@@ -1,8 +1,8 @@
 # easy-invited
 
-* egg + Typescript + sequelize-typescript 实现易邀小程序后台
-* 小程序二维码
-* 
+ egg + Typescript + sequelize-typescript 实现易邀小程序后台
+ 小程序二维码
+ 
 
 ## QuickStart
 
