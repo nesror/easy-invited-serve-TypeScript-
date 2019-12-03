@@ -1,5 +1,6 @@
 import { Service } from 'egg';
 import HttpClientProxy from '../base/httpClientProxy';
+import { access_token } from '../schedule/accessTokenCache';
 
 /**
  * 处理微信消息
@@ -13,9 +14,8 @@ export default class WxMsgService extends Service {
      * @param formid 
      */
     public async joinMessage(openid: string, activityId: number, formid: string) {
-        const { ctx, config } = this;
+        const { ctx } = this;
 
-        const access_token = await this.getAccessToken(config, ctx)
         const user = await this.service.datebase.findUserByUserId(openid)
         if (!user) {
             return
@@ -82,9 +82,7 @@ export default class WxMsgService extends Service {
      * @param activityId 
      */
     public async quitMessage(openid: string, activityId: number) {
-        const { ctx, config } = this;
-
-        const access_token = await this.getAccessToken(config, ctx)
+        const { ctx } = this;
 
         const user = await this.service.datebase.findUserByUserId(openid)
         if (!user) {
@@ -116,18 +114,6 @@ export default class WxMsgService extends Service {
             .setData({ data: data })
             .post(ctx)
 
-    }
-
-
-    private async getAccessToken(config: import("egg").EggAppConfig, ctx: import("egg").Context): Promise<string> {
-        let result = await new HttpClientProxy<any>('https://api.weixin.qq.com/cgi-bin/token')
-            .setData({
-                appid: config.wx.appid,
-                secret: config.wx.appsecret,
-                grant_type: 'client_credential'
-            })
-            .get(ctx);
-        return result.data.access_token
     }
 
 }
