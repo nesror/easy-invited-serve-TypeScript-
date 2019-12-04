@@ -47,7 +47,7 @@ export default class WxMsgService extends Service {
         });
         await new HttpClientProxy<any>('https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send')
             .setUrlParam({ access_token: access_token })
-            .setData({ data: data })
+            .setData(data)
             .post(ctx)
 
         data = JSON.stringify({
@@ -72,7 +72,7 @@ export default class WxMsgService extends Service {
         });
         await new HttpClientProxy<any>('https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send')
             .setUrlParam({ access_token: access_token })
-            .setData({ data: data })
+            .setData(data)
             .post(ctx)
     }
 
@@ -111,7 +111,7 @@ export default class WxMsgService extends Service {
         });
         await new HttpClientProxy<any>('https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send')
             .setUrlParam({ access_token: access_token })
-            .setData({ data: data })
+            .setData(data)
             .post(ctx)
 
     }
