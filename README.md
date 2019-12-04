@@ -1,6 +1,6 @@
 # easy-invited
 
- egg + Typescript + sequelize-typescript 易邀小程序后台
+ 用egg + Typescript + sequelize-typescript 重写的易邀小程序后台
  
  小程序二维码
  
