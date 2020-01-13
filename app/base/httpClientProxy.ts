@@ -68,14 +68,14 @@ export default class HttpClientProxy<T> {
             dataType: this.dataType,
             data: this.data
         })
-        ctx.logger.info(`post->
---------------request----------------
+        ctx.logger.info(`
+################ post ###############
     ---URL:${this.httpUrl}
     ---body:${JSON.stringify(this.data)}
--------------response----------------
+#######response ${res.status}########
     ---headers:${JSON.stringify(res.headers)}
     ---body:${JSON.stringify(res.data)}
----------------------------------------`);
+#####################################`);
         return res
     }
 
@@ -90,14 +90,14 @@ export default class HttpClientProxy<T> {
             data: this.data
         })
 
-        ctx.logger.info(`get->
---------------request----------------
+        ctx.logger.info(`
+################ get ################
     ---URL:${this.httpUrl}
     ---DATA:${JSON.stringify(this.data ? this.data : {})}
--------------response----------------
+#######response ${res.status}########
     ---headers:${JSON.stringify(res.headers)}
     ---body:${JSON.stringify(res.data)}
----------------------------------------`);
+#####################################`);
         return res
     }
 
