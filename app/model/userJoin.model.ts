@@ -1,12 +1,13 @@
-import { Column, Model, Table, CreatedAt, UpdatedAt, ForeignKey } from 'sequelize-typescript';
+import { Column, Table, ForeignKey } from 'sequelize-typescript';
 import User from './user.model';
 import Activity from './activity.model';
+import { BaseModel } from './baseModel';
 
 /**
  * 用户活动信息
  */
 @Table({ tableName: 'user_join' })
-export default class UserJoin extends Model<UserJoin>{
+export default class UserJoin extends BaseModel<UserJoin>{
 
     @Column({
         primaryKey: true,
@@ -42,11 +43,5 @@ export default class UserJoin extends Model<UserJoin>{
         comment: '参加人数',
     })
     join_num: number;
-
-    @CreatedAt
-    create_time: Date;
-
-    @UpdatedAt
-    update_time: Date;
 }
 

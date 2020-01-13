@@ -1,10 +1,11 @@
-import { Column, Model, Table, CreatedAt, UpdatedAt } from 'sequelize-typescript';
+import { Column, Table} from 'sequelize-typescript';
+import { BaseModel } from './baseModel';
 
 /**
  * 活动信息
  */
 @Table({ tableName: 'activity' })
-export default class Activity extends Model<Activity>{
+export default class Activity extends BaseModel<Activity>{
     /**
      * 活动id
      */
@@ -78,11 +79,5 @@ export default class Activity extends Model<Activity>{
         comment: 'after_join',
     })
     after_join: string;
-
-    @CreatedAt
-    create_time: Date;
-
-    @UpdatedAt
-    update_time: Date;
 }
 

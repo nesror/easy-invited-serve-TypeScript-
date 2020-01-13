@@ -3,6 +3,7 @@
 
 import 'egg';
 import ExportActivityModel from '../../../app/model/activity.model';
+import ExportBaseModel from '../../../app/model/baseModel';
 import ExportEncryptedComponent from '../../../app/model/encryptedComponent';
 import ExportHttpResponse from '../../../app/model/httpResponse';
 import ExportJscode2session from '../../../app/model/jscode2session';
@@ -14,6 +15,7 @@ import ExportWxCtx from '../../../app/model/wxCtx';
 declare module 'egg' {
   interface IModel {
     ActivityModel: ReturnType<typeof ExportActivityModel>;
+    BaseModel: ReturnType<typeof ExportBaseModel>;
     EncryptedComponent: ReturnType<typeof ExportEncryptedComponent>;
     HttpResponse: ReturnType<typeof ExportHttpResponse>;
     Jscode2session: ReturnType<typeof ExportJscode2session>;

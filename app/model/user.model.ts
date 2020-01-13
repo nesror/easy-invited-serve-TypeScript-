@@ -1,12 +1,14 @@
-import { Column, Model, Table, CreatedAt, UpdatedAt } from 'sequelize-typescript';
+import { Column, Table} from 'sequelize-typescript';
+import { BaseModel } from './baseModel';
 
 /**
  * 用户信息
  */
 @Table({ tableName: 'user' })
-export default class User extends Model<User>{
+export default class User extends BaseModel<User>{
     /**
      * 用户id
+     * TODO primaryKey建议改成自增id
      */
     @Column({
         primaryKey: true,
@@ -31,11 +33,5 @@ export default class User extends Model<User>{
 
     @Column
     phone: string;
-
-    @CreatedAt
-    create_time: Date;
-
-    @UpdatedAt
-    update_time: Date;
 }
 
